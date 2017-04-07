@@ -22,8 +22,8 @@ jdk版本是1.8.0_77。ndk版本是r10b，opencv4android的sdk版本是2.4.8。�
 ![](./images/projectother.png) 
 ![](./images/protoc.png)
 第三步：右键项目名StitchTest-properties，点击Android-Add，弹出Project Selection对话框，选择之前下到的opencv4android2.4.8版本的sdk，点击ok添加进了项目需要的库函数中，如图。
-![](./images/addoa1)
-![](./images/addoa2)
+![](./images/addoa1.png)
+![](./images/addoa2.png)
 
 第四步：点击properties中的Builders-New...弹出对话框Choose configuration type，选择Program，在弹出的对话框中Main选项卡设置ndkbuild和当前的工作目录，在Refresh选项卡里设置如图，在Build Options选项卡设置如图
 ![](./images/builder1.png)
