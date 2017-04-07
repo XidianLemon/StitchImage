@@ -115,8 +115,27 @@ import android.widget.Button;
 				mLoaderCallback);
 	}
 ```
+下面是c++端的代码解释
+``` c++
+extern "C"
+{
+	JNIEXPORT void JNICALL Java_com_example_stitchimage_ImageProc_FindFeatures(JNIEnv*, jobject,jlong image)
+	{
+		vector<Mat> imgs;
+		bool try_use_gpu = false;
+		Mat& pano = *((Mat*) image);
 
+		Mat img = imread("/storage/emulated/0/panoTmpImage/snow1.jpg");
+			imgs.push_back(img);
+			img = imread("/storage/emulated/0/panoTmpImage/snow2.jpg");
+			imgs.push_back(img);
 
+		Stitcher stitcher = Stitcher::createDefault(try_use_gpu);
+		Stitcher::Status status = stitcher.stitch(imgs, pano);
+	}
+}
+```
+这是c++图像拼接算法，这个imread函数可以用到安卓程序中，读的是手机内存的路径，stitch这个函数是opencv提供的。注意最开始的这一行JNICALL Java_com_example_stitchimage_ImageProc_FindFeatures(JNIEnv*, jobject,jlong image)一定要和你的java端的包名，类名，方法名，完全对应，还有参数要对应，env和obj是必须要存在的两个参数，jlong对应着java的long型变量。
 
 
 
