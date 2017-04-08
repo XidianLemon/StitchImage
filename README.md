@@ -21,6 +21,7 @@ jdk版本是1.8.0_77。ndk版本是r10b，opencv4android的sdk版本是2.4.8。�
 第二步：右键项目名StitchTest-new-other-Convert to a C/C++ Project(Adds C/C++ Native)-next，选择你的项目StitchTest，点击finish。这一步是为了给该项目添加c/c++属性，使项目支持c/c++编程。
 ![](./images/projectother.png) 
 ![](./images/protoc.png)
+
 第三步：右键项目名StitchTest-properties，点击Android-Add，弹出Project Selection对话框，选择之前下到的opencv4android2.4.8版本的sdk，点击ok添加进了项目需要的库函数中，如图。
 ![](./images/addoa1.png)
 ![](./images/addoa2.png)
@@ -136,11 +137,14 @@ extern "C"
 }
 ```
 这是c++图像拼接算法，这个imread函数可以用到安卓程序中，读的是手机内存的路径，stitch这个函数是opencv提供的。注意最开始的这一行JNICALL Java_com_example_stitchimage_ImageProc_FindFeatures(JNIEnv*, jobject,jlong image)一定要和你的java端的包名，类名，方法名，完全对应，还有参数要对应，env和obj是必须要存在的两个参数，jlong对应着java的long型变量。
+我一直不是很理解，为什么imread函数可以直接读取安卓手机的路径，跟opencv4android群友讨论，得到的答案我也不是很满意。
+群友给出的答案是：opencv可以在linux中运行，imread也可以读取绝对路径和相对路径的，就能读安卓设备上的图片了。
+接下来看一下工程下面jni文件夹下的Android.mk文件：
+include D:\OpenCV-2.4.8-android-sdk\sdk\native\jni\OpenCV.mk这一行指定你本机中opencv的sdk中opencv.mk文件的路径
+LOCAL_MODULE    := native_sample这一行指定你通过build生成的.so文件的名字
+LOCAL_SRC_FILES := jni_part.cpp这一行指定你的jni文件夹下.cpp文件的名字
 
-
-
-
-
+这个例程的ui我只放了一个button，点击即拼接指定路径的两张图，重点是实现拼接这个功能。如果你哪里有问题，欢迎在github上提问，我会保持更新。
 
 
 
