@@ -32,7 +32,7 @@ jdk版本是1.8.0_77。ndk版本是r10b，opencv4android的sdk版本是2.4.8。�
 ![](./images/builder3.png)
 ![](./images/builder4.png)
 
-第五步：点击properties中的c/c++build-encironment 设置c/c++环境中的ndk目录，在c/c++ General设置Paths and symbols 如图
+第五步：点击properties中的c/c++build-environment 设置c/c++环境中的ndk目录，在c/c++ General设置Paths and symbols 如图
 ![](./images/ndkdir1.png)
 ![](./images/ndkdir2.png)
 ![](./images/ndkdir3.png)
